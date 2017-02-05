@@ -1,0 +1,9 @@
+#recipe Blog
+#theme carlton
+
+Settings[BlogKeys.Title] = "My Blog";
+Settings[BlogKeys.Description] = "Welcome!";
+Settings[BlogKeys.MarkdownExtensions] = "advanced+bootstrap";
+Settings[BlogKeys.IncludeDateInPostPath] = false;
+Settings[BlogKeys.PostsPath] = new DirectoryPath("posts");
+Settings[BlogKeys.MetaRefreshRedirects] = true;

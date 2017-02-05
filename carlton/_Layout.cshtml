@@ -1,0 +1,37 @@
+@{
+    string Title = Model.WithoutSettings.String(BlogKeys.Title);
+    string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>@PageTitle</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:900" rel="stylesheet">
+
+    <link rel="stylesheet" href="///cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/reset.min.css" />
+    <link rel="stylesheet" href="///cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/site.min.css" />
+    <link rel="stylesheet" href="///cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css"  />
+    <link rel="stylesheet" href="///maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/carlton.css" />
+
+    
+</head>
+<body>
+    <div id="layout">
+        <div id="sidebar">
+            <div id="header">
+                <h1><a href="/">@Context.String(BlogKeys.Title)</a></h1>
+            </div>
+        </div>
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
+    <script defer async src="///cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js" integrity="sha256-1uR+pqxH5fN/rOZcZTb9c5+bR3OIYEKzu2sI11Dnj9A=" crossorigin="anonymous"></script>
+</body>
+</html>

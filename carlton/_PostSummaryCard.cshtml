@@ -1,0 +1,22 @@
+@model IDocument
+
+@{
+    var tags = Model.Get<string[]>(BlogKeys.Tags);
+} 
+
+
+    
+<div class="content">
+    <a class="header">@Model.WithoutSettings.String(BlogKeys.Title)</a>
+    <div class="meta">@(Model.Get<DateTime>(BlogKeys.Published).ToLongDateString())</div>
+    <div class="description">@Html.Raw(Model.String(BlogKeys.Excerpt))</div>
+</div>
+
+@foreach (string tag in tags.OrderBy(x => x))
+{
+    IDocument tagDocument = Documents[BlogKeys.Tags].FirstOrDefault(x => x.String(BlogKeys.Tag) == tag);
+    if(tagDocument != null)
+    {                
+        <a role="button" href="@Context.GetLink(tagDocument)">@tag</a>
+    }
+}

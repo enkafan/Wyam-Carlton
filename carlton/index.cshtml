@@ -1,0 +1,6 @@
+@{
+    foreach(IDocument doc in Documents[BlogPipelines.Posts])
+    {
+        @Html.Partial("_PostSummaryCard", doc)
+    }
+}
