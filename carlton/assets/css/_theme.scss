@@ -1,0 +1,10 @@
+$sidebar-background-color: #2C3E50;
+$sidebar-foreground-color: desaturate(lighten($sidebar-background-color, 60%), 50%);
+$sidebar-foreground-hover: lighten($sidebar-background-color, 50%);
+
+$icon-colors: (
+    github: #444,
+    twitter: #55acee,
+    linkedin: #0976b4,
+    rss: #f60
+);

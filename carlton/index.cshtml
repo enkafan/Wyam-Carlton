@@ -1,6 +1,17 @@
 @{
-    foreach(IDocument doc in Documents[BlogPipelines.Posts])
+    bool first = true;
+
+    foreach(IDocument doc in Documents[BlogPipelines.Posts].Take(5))
     {
-        @Html.Partial("_PostSummaryCard", doc)
+        if (first)
+        {
+            first = false;
+        }   
+        else
+        {
+            <hr class="post-divider" />
+        }
+
+        @Html.Raw(doc.String(BlogKeys.Content))
     }
 }

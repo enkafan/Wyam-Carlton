@@ -1,0 +1,36 @@
+@{
+    var title = Model.WithoutSettings.String(BlogKeys.Title);
+    var pageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(title) ? string.Empty : " - " + title);
+
+    var tags = Model.Get<string[]>(BlogKeys.Tags);
+    var published = Model.Get<DateTime>(BlogKeys.Published);   
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@pageTitle</title>
+</head>
+
+<h1><a href="/">@Context.String(BlogKeys.Title)</a></h1>
+<ul>
+    <li><a href="@Context.GetLink("/about")">About Me</a></li>
+    <li><a href="@Context.GetLink("/posts")">Archive</a></li>
+    <li><a href="@Context.GetLink("/tags")">Tags</a></li>
+</ul>
+
+@if (string.IsNullOrWhiteSpace(title) == false)
+{
+    <h1><a href="@Context.GetLink(Model)">@title</a></h1>
+}
+
+<div class="meta">
+    @if (published != default(DateTime))
+    {
+        <span>@published.ToLongDateString()</span>
+    }
+</div>
+
+<div id="content">
+    @RenderBody()
+</div>

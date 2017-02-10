@@ -1,0 +1,10 @@
+@{
+    Layout = "_Layout.cshtml";
+}
+
+@{
+    foreach(IDocument doc in Documents[BlogPipelines.Posts].Take(5))
+    {
+        @Html.Raw(doc.String(BlogKeys.Content))
+    }
+}

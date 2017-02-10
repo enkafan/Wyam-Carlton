@@ -1,3 +1,10 @@
-Title: All Tags
----
-tags/tag.cshtml
+@{
+    Layout = "/_PostLayout.cshtml";
+}
+
+<ul>
+    @foreach (IDocument document in Model.DocumentList(BlogKeys.Posts).OrderByDescending(x => x.Get<DateTime>(BlogKeys.Published)))
+    {
+        <li><a role="button" href="@Context.GetLink(document)">@document.String(BlogKeys.Title)</a></li>
+    }
+</ul>

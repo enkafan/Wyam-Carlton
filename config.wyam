@@ -1,9 +1,17 @@
 #recipe Blog
-#theme carlton
+#theme barebones
+
+#a C:\Projects\Wyam\src\extensions\Wyam.Sass\bin\Debug\Wyam.Sass.dll
 
 Settings[BlogKeys.Title] = "My Blog";
 Settings[BlogKeys.Description] = "Welcome!";
-Settings[BlogKeys.MarkdownExtensions] = "advanced+bootstrap";
-Settings[BlogKeys.IncludeDateInPostPath] = false;
-Settings[BlogKeys.PostsPath] = new DirectoryPath("posts");
-Settings[BlogKeys.MetaRefreshRedirects] = true;
+
+Settings["Github"] = "https://github.com/enkafan";
+Settings["Twitter"] = "https://twitter.com/Philco78";
+Settings["LinkedIn"] = "https://www.linkedin.com/in/phil-scott-4b3455a5";
+
+Pipelines.Add("Sass",
+    ReadFiles("assets/css/carlton.scss"),
+    new Wyam.Sass.Sass().WithExpandedOutputStyle(),
+    WriteFiles(".css")
+);
